@@ -1,0 +1,71 @@
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>GeoAR.js demo</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    </script>
+    <script>
+        window.onload = () => {
+            navigator.geolocation.getCurrentPosition((position) => {
+                // document.querySelector('a-video').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+            });
+            const button = document.querySelector('#play');
+            button.addEventListener("click", function () {
+                document.querySelector("#vid").play();
+            })
+        }
+    </script>
+    <style>
+        .buttons {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .say-hi-button {
+            padding: 0.25em;
+            border-radius: 4px;
+            border: none;
+            background: white;
+            color: black;
+            width: 4em;
+            height: 2em;
+        }
+    </style>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+<a-scene
+        vr-mode-ui="enabled: false"
+        embedded
+        arjs="sourceType: webcam; debugUIEnabled: false;"
+>
+    <!--    <a-text-->
+    <!--            position="0 0 0"-->
+    <!--            id="play"-->
+    <!--            value="Test"-->
+    <!--            look-at="[gps-camera]"-->
+    <!--            scale="1 1 1"-->
+    <!--            gps-entity-place="latitude: 40.1928757; longitude: 44.4175058;"-->
+    <!--    ></a-text>-->
+    <a-assets>
+        <video crossorigin="anonymous" type="video/mp4" id="vid"    loop="false" src="https://test-narek.s3.us-east-2.amazonaws.com/Sample-MP4-Video-File-for-Testing.mp4?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEQaCWV1LXdlc3QtMiJHMEUCIFJnjzXTL%2Bhy%2FosQf2PP0bV6PE6oau6SWcSDYrj6M29QAiEA00MqHQxuGmTML30F9JRbCCEmycqKyF%2FidwFMHtMoM6gq%2FwIIfBADGgw2MTI4NzI5MzEyOTAiDECJCAJGdQSwabj7oCrcAijiR9wUFl0jnvx2vgzRZKLQ8k1Z9e1T%2FlzIdnTCBL5%2BeFEfVApgafc18TNgXmgE68Bs1hIw3SFDk66Y4bCls75QFW3VNp1trsvAFElI4XbQdEHOJAKkASSAqFkImX9%2BdhnFSSWI9ASEGSIJu6bmbqeNR4UO3cG62U%2Fnrg2sNJB%2BOWuvcDlxK605UO66la%2BEUzYIYDWs%2BcaZCMwfaRF0JXYmjolFIQSOw11wFcGX1idKar5KUdfXCDvOdU9BFKJjbO2kCN%2FcOy9SpOelzIOZcPj2jErfm%2F%2F9dnvB65Cjksooa43dVGqqI7%2FkRoEOWJZIqzQ0lP%2FBskQPeZrFWhhVTSVLC1WYqL5oFzWLgHNlrS22pwGxm79SAr36krCxyY7fP%2BsbShbUJ8VADxWmuSu2VOQeutqzDoEa8vMDrl3Qj2ljRtenoMagNrHof8B6DZFHH2jbP1%2BS%2FHX3qd5F9zDz1PCPBjqzAo9W%2F3D%2BKXoGqYU80goDc%2FbErhzV%2FVD3x7pYRIOcb%2F%2FKVD8T01MpEyvPPM54IEaSdWJNSvr%2FcXwhPPNsdoh8pQ%2FqhAm4dwstPxNeFh3AanerXVaqwTEezXd%2FZtI6BrNfJRZ9i5HDIxmo7AKDMJVHxXOtODiBqk04c70vqZNGEDHsqhvVxzXjYPzl68BXHSwjIEMYRfQNcaSZMh9rbvGkYgJ33thcU7k0wgBSj44gxhwgFSRq%2BeSt72bojV6%2BWkAhERFB6TXbuBF0IWwqNkUJa7epirq%2F0OhHLIySKNrV26uHwlwrrnpQuSeQLkrwftzptJ2jZ7Dhr3j8L9VUSwvThvG95YAorB4NxvReRRQNUypOU3pAS0ov%2Bl0gx%2FRqrIyFNLaYjQvjt75LAtnl4DNfezURTDU%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220203T192157Z&X-Amz-SignedHeaders=host&X-Amz-Expires=604800&X-Amz-Credential=ASIAY5MQSY7NHF3E6VPB%2F20220203%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Signature=0f21f9088b8ca2753c8e00f2a00f0cca0290a64c8ef1109c02cbf593ec07ec46" webkit-playsinline >
+        </video>
+    </a-assets>
+    <a-video vidhandler  position="0 0.2 0" src="#vid" rotation="90 180 0"></a-video>
+
+    <a-camera gps-camera rotation-reader> </a-camera>
+</a-scene>
+<div class="buttons">
+    <button id = "play" class="say-hi-button"></button>
+</div>
+
+</body>

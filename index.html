@@ -8,14 +8,26 @@
     </script>
     <script>
         window.onload = () => {
-            navigator.geolocation.getCurrentPosition((position) => {
-                document.querySelector('a-text').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
-            });
+            // navigator.geolocation.getCurrentPosition((position) => {
+            //     // document.querySelector('a-video').setAttribute('gps-entity-place', `latitude: ${position.coords.latitude}; longitude: ${position.coords.longitude};`)
+            // });
             const button = document.querySelector('#play');
             button.addEventListener("click", function () {
-                alert("Pressed")
-            })
-        }
+                alert("click tt")
+                var playPromise = document.querySelector("#vid").play();
+                if (playPromise !== undefined) {
+                    playPromise.then(function() {
+                        // Automatic playback started!
+                        console.log("OK")
+                    }).catch(function(error) {
+                        // Automatic playback failed.
+                        // Show a UI element to let the user manually start playback.
+                        alert(error);
+                    });
+                } else {
+                    alert("empty")
+                }
+            })}
     </script>
     <style>
         .buttons {
@@ -48,16 +60,16 @@
         embedded
         arjs="sourceType: webcam; debugUIEnabled: false;"
 >
-<!--    <a-text-->
-<!--            position="0 0 0"-->
-<!--            id="play"-->
-<!--            value="Test"-->
-<!--            look-at="[gps-camera]"-->
-<!--            scale="1 1 1"-->
-<!--            gps-entity-place="latitude: 40.1928757; longitude: 44.4175058;"-->
-<!--    ></a-text>-->
+    <!--    <a-text-->
+    <!--            position="0 0 0"-->
+    <!--            id="play"-->
+    <!--            value="Test"-->
+    <!--            look-at="[gps-camera]"-->
+    <!--            scale="1 1 1"-->
+    <!--            gps-entity-place="latitude: 40.1928757; longitude: 44.4175058;"-->
+    <!--    ></a-text>-->
     <a-assets>
-        <video  type="video/mp4" id="vid"    loop="false" src="https://ucarecdn.com/bb90f1f8-134e-4eb2-9688-38721ee7e9ad/" webkit-playsinline >
+        <video  crossorigin="anonymous" type="video/mp4" id="vid"    loop="false" src="https://narek1995.github.io/testAR/Sample-MP4-Video-File-for-Testing.mp4" webkit-playsinline >
         </video>
     </a-assets>
     <a-video vidhandler  position="0 0.2 0" src="#vid" rotation="90 180 0"></a-video>
@@ -65,7 +77,7 @@
     <a-camera gps-camera rotation-reader> </a-camera>
 </a-scene>
 <div class="buttons">
-    <button id = "play" class="say-hi-button"></button>
+    <button style="z-index: 9999999999" id ="play" class="say-hi-button">Play</button>
 </div>
 
 </body>
