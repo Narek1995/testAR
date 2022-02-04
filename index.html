@@ -13,7 +13,7 @@
             // });
             const button = document.querySelector('#play');
             button.addEventListener("click", function () {
-                alert("click 7")
+                alert("click 8")
                 var playPromise = document.querySelector("#vid").play();
                 if (playPromise !== undefined) {
                     playPromise.then(function() {
@@ -72,7 +72,7 @@
         <video  crossorigin="anonymous" type="video/mp4" id="vid"    loop="false" src="https://narek1995.github.io/testAR/Sample-MP4-Video-File-for-Testing.mp4" webkit-playsinline >
         </video>
     </a-assets>
-    <a-video vidhandler  scale="2 2 2"  look-at="[gps-camera]" position="-20 0 -10"  src="#vid" ></a-video>
+    <a-video vidhandler  scale="2 2 2"  look-at="[gps-camera]" position="-30 0 -10"  src="#vid" ></a-video>
 
     <a-camera gps-camera rotation-reader> </a-camera>
 </a-scene>
