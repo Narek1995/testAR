@@ -71,7 +71,7 @@
         <video  crossorigin="anonymous" type="video/mp4" id="vid"    loop="false" src="https://narek1995.github.io/testAR/Sample-MP4-Video-File-for-Testing.mp4" webkit-playsinline >
         </video>
     </a-assets>
-    <a-video vidhandler  scale="0.25 0.25 0.25"  position="0 0 0" src="#vid" rotation="90 180 0"></a-video>
+    <a-video vidhandler  scale="1 1 1"  look-at="[gps-camera]" position="5 0 0"  src="#vid" ></a-video>
 
     <a-camera gps-camera rotation-reader> </a-camera>
 </a-scene>
